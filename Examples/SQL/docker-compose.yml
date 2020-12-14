@@ -1,4 +1,9 @@
 version: '2.0'
+
+networks:
+  internal:
+    driver: bridge
+
 services:
   db:
     image: "${PGIMAGE}"   
@@ -13,3 +18,19 @@ services:
      POSTGRES_PASSWORD: "${PGPASSWORD}"
      POSTGRES_DB:       "${PGDATABASE}"
      POSTGRES_MULTIPLE_DATABASES: "devbase"
+    networks:
+      - internal
+
+  my-app:
+    container_name: 'APP'
+    restart: always
+    image: app 
+    build:
+      context: ./
+      dockerfile: app.dockerfile
+    ports:
+      - "5000:80"
+    links:
+      - "db"
+    networks:
+      - internal

@@ -23,7 +23,7 @@ namespace Database.EFCore
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql("Host=localhost;Port=5444;Database=devbase;User ID=postgres;Password=postgres;");
+                optionsBuilder.UseNpgsql("Host=db;Port=5432;Database=devbase;User ID=postgres;Password=postgres;");
             }
         }
 
