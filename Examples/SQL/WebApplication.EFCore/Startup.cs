@@ -34,7 +34,7 @@ namespace WebApplication.EFCore
             services.AddScoped<IWeatherDataAccess, WeatherDataAccess>();
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddDbContext<ExampleContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("ExampleDbContext")));
+                options.UseNpgsql(Environment.GetEnvironmentVariable("CONNECTION_STRING") != null ? Environment.GetEnvironmentVariable("CONNECTION_STRING") : Configuration.GetConnectionString("ExampleDbContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
