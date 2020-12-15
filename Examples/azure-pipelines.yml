@@ -39,7 +39,6 @@ steps:
     nuGetFeedType: 'internal'
     vstsFeed: DeveloperTools/WebApp_feed
     publishVstsFeed: DeveloperTools/WebApp_feed
-    publishVstsFeed: ''
     versioningScheme: 'off'
     allowPackageConflicts: true
 
