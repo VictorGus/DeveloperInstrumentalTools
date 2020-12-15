@@ -30,12 +30,23 @@ steps:
     nobuild: true
     versioningScheme: 'off'
 
-- task: DotNetCoreCLI@2
-  displayName: "dotnet push"
+- task: NuGetCommand@2
+  displayName: 'nuget push'
   inputs:
     command: 'push'
+    feedsToUse: 'select'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'WebApp_feed'
     versioningScheme: 'off'
     allowPackageConflicts: true
+
+# - task: DotNetCoreCLI@2
+#   displayName: "dotnet push"
+#   inputs:
+#     command: 'push'
+#     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+#     nuGetFeedType: 'internal'
+#     publishVstsFeed: 'WebApp_feed'
+#     versioningScheme: 'off'
+#     allowPackageConflicts: true
