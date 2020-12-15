@@ -24,7 +24,7 @@ services:
   my-app:
     container_name: 'APP'
     restart: always
-    image: app 
+    image: web-app:latest
     build:
       context: ./
       dockerfile: app.dockerfile

@@ -18,6 +18,9 @@ down:
 publish:
 	cd ./WebApplication.EFCore && dotnet publish && cd ../Database.EFCore && dotnet publish
 
+docker-build:
+	docker build -f app.dockerfile -t web-app .
+
 run:
 	cd ./WebApplication.EFCore && set CONNECTION_STRING="Host=localhost;Port=5432;Database=devbase;User ID=postgres;Password=postgres;" && dotnet run
 
