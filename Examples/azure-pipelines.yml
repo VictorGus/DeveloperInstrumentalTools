@@ -37,7 +37,9 @@ steps:
     feedsToUse: 'select'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     nuGetFeedType: 'internal'
-    publishVstsFeed: 'WebApp_feed'
+    vstsFeed: DeveloperTools/WebApp_feed
+    publishVstsFeed: DeveloperTools/WebApp_feed
+    publishVstsFeed: ''
     versioningScheme: 'off'
     allowPackageConflicts: true
 
