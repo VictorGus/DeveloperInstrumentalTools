@@ -28,7 +28,7 @@ steps:
     arguments: '--configuration $(buildConfiguration)'
     packagesToPack: 'Examples/SQL/Database.EFCore/Database.EFCore.csproj'
     nobuild: true
-    versioningScheme: byBuildNumber
+    versioningScheme: 'off' 
 
 - task: NuGetCommand@2
   displayName: 'nuget push'
@@ -37,8 +37,8 @@ steps:
     feedsToUse: 'select'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     nuGetFeedType: 'internal'
-    vstsFeed: DeveloperTools/WebApp_feed
-    publishVstsFeed: DeveloperTools/WebApp_feed
+    vstsFeed: DeveloperTools/App_feed
+    publishVstsFeed: DeveloperTools/App_feed
     allowPackageConflicts: true
 
 # - task: DotNetCoreCLI@2
