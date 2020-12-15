@@ -19,14 +19,14 @@ steps:
   inputs:
     command: 'build'
     arguments: '--configuration $(buildConfiguration)'
-    projects: 'SQL/Database.EfCore/Database.EfCore.csproj'
+    projects: 'SQL/Database.EFCore/Database.EFCore.csproj'
 
 - task: DotNetCoreCLI@2
   displayName: "dotnet pack"
   inputs:
     command: 'pack'
     arguments: '--configuration $(buildConfiguration)'
-    packagesToPack: 'SQL/Database.EfCore/Database.EfCore.csproj'
+    packagesToPack: 'SQL/Database.EFCore/Database.EFCore.csproj'
     nobuild: true
     versioningScheme: 'off'
 
