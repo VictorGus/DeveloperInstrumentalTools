@@ -28,7 +28,10 @@ steps:
     arguments: '--configuration $(buildConfiguration)'
     packagesToPack: 'Examples/SQL/Database.EFCore/Database.EFCore.csproj'
     nobuild: true
-    versioningScheme: 'off' 
+    versioningScheme: 'byPrereleaseNumber'
+    majorVersion: '1'
+    minorVersion: '1'
+    patchVersion: '0'
 
 # - task: NuGetCommand@2
 #  displayName: 'dotnet push'
