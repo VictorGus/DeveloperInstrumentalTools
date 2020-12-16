@@ -1,0 +1,22 @@
+version: '2.0'
+
+networks:
+  internal:
+    driver: bridge
+
+services:
+  db:
+    image: "${PGIMAGE}"   
+    container_name: devbase 
+    ports:
+      - "${PGPORT}:5432"
+    volumes:
+      - "./pgdata:/var/lib/postgresql/data"
+      - "./init:/docker-entrypoint-initdb.d"
+    environment:
+     POSTGRES_USER:     "${PGUSER}"
+     POSTGRES_PASSWORD: "${PGPASSWORD}"
+     POSTGRES_DB:       "${PGDATABASE}"
+     POSTGRES_MULTIPLE_DATABASES: "devbase"
+    networks:
+      - internal

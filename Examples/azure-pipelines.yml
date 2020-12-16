@@ -31,7 +31,7 @@ steps:
     versioningScheme: 'off' 
 
 - task: NuGetCommand@2
-  displayName: 'nuget push'
+  displayName: 'dotnet push'
   inputs:
     command: 'push'
     feedsToUse: 'select'

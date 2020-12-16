@@ -30,11 +30,12 @@ namespace WebApplication.EFCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var envString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
             services.AddControllers();
             services.AddScoped<IWeatherDataAccess, WeatherDataAccess>();
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddDbContext<ExampleContext>(options =>
-                options.UseNpgsql(Environment.GetEnvironmentVariable("CONNECTION_STRING") != null ? Environment.GetEnvironmentVariable("CONNECTION_STRING") : Configuration.GetConnectionString("ExampleDbContext")));
+                options.UseNpgsql(envString != null ? envString : Configuration.GetConnectionString("ExampleDbContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

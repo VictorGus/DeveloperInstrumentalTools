@@ -12,8 +12,14 @@ PGIMAGE    ?= postgres:latest
 up:
 	docker-compose up -d
 
+db-up:
+	docker-compose -f docker-compose.db.yaml up -d
+
 down:
 	docker-compose down
+
+db-down:
+	docker-compose -f docker-compose.db.yaml down
 
 publish:
 	cd ./WebApplication.EFCore && dotnet publish && cd ../Database.EFCore && dotnet publish
