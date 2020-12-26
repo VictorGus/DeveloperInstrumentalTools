@@ -10,6 +10,8 @@ namespace Database.EFCore
         public DbSet<SummaryEntity> Summaries { get; set; }
         public DbSet<WeatherEntity> Weathers { get; set; }
         
+        public DbSet<UserEntity> Users { get; set; }   
+        
         public ExampleContext()
         {
         }
@@ -23,7 +25,7 @@ namespace Database.EFCore
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql("Host=db;Port=5432;Database=devbase;User ID=postgres;Password=postgres;");
+                optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=devbase;User ID=postgres;Password=postgres;");
             }
         }
 
@@ -80,7 +82,11 @@ namespace Database.EFCore
                 Temperature = -10m,
                 SummaryId = 1
             });
-            
+
+            modelBuilder.Entity<UserEntity>().HasData(new { Id = 1, Email = "test@test.net", Password = "qwe" });
+            modelBuilder.Entity<UserEntity>().HasData(new { Id = 2, Email = "test1@test1.net", Password = "asd" });
+            modelBuilder.Entity<UserEntity>().HasData(new { Id = 3, Email = "test2@test2.net", Password = "zxc"});
+
             //modelBuilder.Entity<WeatherEntity>().OwnsOne(p => p.Summary).HasData(new { Date = new DateTime(2020, 1, 1), Temperature = -1, Code = "Chill" });
         }
 
